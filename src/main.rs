@@ -13,7 +13,7 @@ fn main() -> Result<()> {
   let repo = Repository::open_ext(current_dir, flags, ceiling_dirs).context("Failed to open repo")?;
 
   // Step 2: Diff
-  let head = repo.revparse_single("origin/main").unwrap();
+  let head = repo.revparse_single("main").unwrap();
   let tree = head.peel_to_tree().unwrap();
   let diff = repo.diff_tree_to_workdir_with_index(Some(&tree), None).unwrap();
 
